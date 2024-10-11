@@ -3,6 +3,12 @@
 ## Setup on WINDOWS WSL
 
 1. Install Python 3.11
+
+```
+sudo apt update && upgrade
+sudo apt install python3 python3-pip
+```
+
 2. Instantiate the virtual environment
 
 ```
