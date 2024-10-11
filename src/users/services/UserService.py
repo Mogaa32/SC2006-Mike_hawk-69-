@@ -3,6 +3,7 @@ import uuid
 from typing import Literal, Optional, Tuple, List
 from pydantic import BaseModel, Field
 
+# ========= pydantic models for FASTAPI requests ============
 class UserCreate(BaseModel):
     userID: uuid.UUID = Field(default_factory=uuid.uuid4)
     userName: str
@@ -25,6 +26,8 @@ class UserRead(BaseModel):
     isAuthority: bool
     isModerator: bool
 
+
+# ============== Entity class for the User model ===============
 class User:
     def __init__(self, 
                  userName: str, 
@@ -55,8 +58,10 @@ class User:
                 f"isModerator={self.isModerator})")
 
 
+# ============== Service class for the User model ===============
+# ============== Used to interact with database ================
 class UserService:
-    def __init__(self, db_file: str = 'users.db'):
+    def __init__(self, db_file: str = 'database/users.db'):
         """Initialize the UserService with a connection to the SQLite database."""
         self.conn = sqlite3.connect(db_file)
         # self.create_user_table()
